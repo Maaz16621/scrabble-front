@@ -244,7 +244,7 @@ useEffect(() => {
   <input
     key={`green-${i}`}
     type="text"
-    className="letter-input border border-green-600 text-black focus:border-black focus:outline-none"
+    className="letter-input border border-green-600 text-black focus:border-black focus:outline-none wordleResult-input"
     maxLength="1"
     autoComplete="off"
     value={greenLetters[i] || ''}
@@ -273,7 +273,7 @@ useEffect(() => {
             <input
               key={`yellow-${index}`} 
               type="text"
-              className="letter-input border border-yellow-500 text-black focus:border-black focus:outline-none"
+              className="letter-input border border-yellow-500 text-black focus:border-black focus:outline-none wordleResult-input"
               maxLength="1"
               autoComplete="off"
               value={yellowLetters[index] || ''} 
@@ -300,7 +300,7 @@ useEffect(() => {
     <div className="flex w-full">
       <input
         type="text"
-        className="letter-input border border-gray-600 text-black w-full focus:border-black focus:outline-none"
+        className="letter-input border border-gray-600 text-black w-full focus:border-black focus:outline-none wordleResult-input"
         value={greyLetters}
         onChange={(e) => {
           setGreyLetters(e.target.value);  // This will directly update the state
@@ -320,7 +320,7 @@ useEffect(() => {
         onChange={() => setNytWordle((prev) => !prev)}
         className="hidden peer"
       />
-      <span className="peer-checked:!bg-orange-web shrink-0 transform w-[1.625rem] h-[1.625rem] border-[7px] border-white bg-white shadow-radio transition-all duration-300"></span>
+      <span className="peer-checked:!bg-orange-web shrink-0 transform w-[1.625rem] h-[1.625rem] border-[7px] border-white bg-white shadow-radio transition-all duration-300 "></span>
       <span className="text-black font-semibold">Today's Wordle Answers Only</span>
     </label>
     <span className="tooltip">

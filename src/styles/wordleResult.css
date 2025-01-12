@@ -61,7 +61,7 @@
   }
   
   /* Input Styles */
-  input[type="text"] {
+  .wordleResult-input{
       width: 50px;
       height: 50px;
       border-radius: 10px;
@@ -81,7 +81,7 @@
   }
   
   /* Placeholder Text Color */
-  input[type="text"]::placeholder {
+  .wordleResult-input::placeholder {
       color: lightgray;
       opacity: 0.8; /* Ensures the placeholder is fully opaque */
       text-transform: none !important;
@@ -89,7 +89,7 @@
   }
   /* Medium screen (tablets) */
   @media (max-width: 990px) {
-      input[type="text"] {
+    .wordleResult-input{
           width: 45px;
           height: 45px;
           font-size: 1.2rem;

@@ -1,29 +1,36 @@
 import React from 'react';
-import Head from 'next/head';
 import BlogTemplate from '@/templates/BlogTemplate';
 import axios from 'axios';
 
+// Function to fetch blog data
+async function fetchBlogData(slug) {
+  try {
+    const response = await axios.get(`https://stagging.aiwordsolver.com/admin/blog/${slug}`);
+    return response.data.data;
+  } catch (error) {
+    console.error('Error fetching blog data:', error);
+    return null;
+  }
+}
+
 // BlogPage Component
-const BlogPage = ({ pageData }) => {
+const BlogPage = async ({ params }) => {
+  const { slug } = params;
+  const pageData = await fetchBlogData(slug);
+
   if (!pageData || pageData.active === 0) {
     return <div>Page not found</div>;
   }
 
   return (
     <div>
-      <Head>
-        <title>{pageData.blog_title}</title>
-        <meta name="description" content={pageData.meta_description} />
-        {pageData.keywords && <meta name="keywords" content={pageData.keywords} />}
-        <link rel="canonical" href={pageData.canonical} />
-      </Head>
-
       <BlogTemplate pageData={pageData} />
     </div>
   );
 };
 
-export async function getStaticPaths() {
+// Generate static parameters for dynamic routes
+export async function generateStaticParams() {
   try {
     const res = await fetch('https://stagging.aiwordsolver.com/admin/blog/getAllBlogs');
     const data = await res.json();
@@ -32,66 +39,36 @@ export async function getStaticPaths() {
       throw new Error('Invalid data format');
     }
 
-    const paths = data.data.map((blog) => ({
-      params: { slug: blog.page_url },
+    return data.data.map(blog => ({
+      slug: blog.page_url,
     }));
-
-    return {
-      paths,
-      fallback: 'blocking',
-    };
   } catch (error) {
-    console.error('Error fetching blog paths:', error);
-    return {
-      paths: [],
-      fallback: 'blocking',
-    };
+    console.error('Error generating static params:', error);
+    return [];
   }
 }
 
-export async function getStaticProps({ params }) {
-  try {
-    const { slug } = params;
-    const response = await axios.get(`https://stagging.aiwordsolver.com/admin/blog/${slug}`);
-    const pageData = response.data.data;
-
-    return {
-      props: {
-        pageData,
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching page data:', error);
-    return {
-      props: {
-        pageData: null,
-      },
-    };
-  }
-}
-
+// Generate metadata for SEO
 export async function generateMetadata({ params }) {
-  try {
-    const { slug } = params;
-    const response = await axios.get(`https://stagging.aiwordsolver.com/admin/blog/${slug}`);
-    const pageData = response.data.data;
-    const metadata = {
-      title: pageData.page_title,
-      description: pageData.meta_description,
-      keywords: pageData.keywords,
-      alternates: {
-        canonical: pageData.canonical || '',
-      },
+  const { slug } = params;
+  const pageData = await fetchBlogData(slug);
+
+  if (!pageData) {
+    return {
+      title: 'Page not found',
+      robots: 'noindex, nofollow',
     };
-
-    // Handle no_index logic
-    metadata.robots = pageData.no_index !== 0 ? 'noindex, nofollow' : 'index, follow';
-
-    return metadata;
-  } catch (error) {
-    console.error('Error generating metadata:', error);
-    return {};
   }
+
+  return {
+    title: pageData.blog_title,
+    description: pageData.meta_description,
+    keywords: pageData.keywords || '',
+    alternates: {
+      canonical: pageData.canonical || '',
+    },
+    robots: pageData.no_index !== 0 ? 'noindex, nofollow' : 'index, follow',
+  };
 }
 
 export default BlogPage;

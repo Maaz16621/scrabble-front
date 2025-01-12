@@ -1,5 +1,5 @@
 
-input[type="text"] {
+.wordle-input {
     width: 60px;
     height: 60px;
     border-radius: 10px;
@@ -45,7 +45,7 @@ input[type="text"] {
 }
 /* Medium screen (tablets) */
 @media (max-width: 768px) {
-    input[type="text"] {
+  .wordle-input {
         width: 55px;
         height: 55px;
         font-size: 1.5rem;
@@ -54,7 +54,7 @@ input[type="text"] {
 
 /* Small screen (mobile devices) */
 @media (max-width: 480px) {
-    input[type="text"] {
+  .wordle-input{
         width: 45px;
         height: 45px;
         font-size: 1.2rem;

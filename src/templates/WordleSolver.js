@@ -169,7 +169,7 @@ const WordleSolver = ({pageData}) => {
               name={key}
               value={greenLetters[key]}
               onChange={(e) => handleInputChange(e, setGreenLetters)}
-              className="letter-input border border-green-700 text-white focus:border-black focus:outline-none"
+              className="letter-input border border-green-700 text-white focus:border-black focus:outline-none wordle-input"
               maxLength="1"
               autoComplete="off"
             />
@@ -198,7 +198,7 @@ const WordleSolver = ({pageData}) => {
               name={key}
               value={yellowLetters[key]}
               onChange={(e) => handleInputChange(e, setYellowLetters)}
-              className="letter-input border border-yellow-500 text-white focus:border-black focus:outline-none"
+              className="letter-input border border-yellow-500 text-white focus:border-black focus:outline-none wordle-input"
               maxLength="1"
               autoComplete="off"
             />
@@ -225,7 +225,7 @@ const WordleSolver = ({pageData}) => {
           value={greyLetters}
           onChange={(e) => setGreyLetters(e.target.value.toUpperCase())}
           style={{ width: '100%', textAlign: 'left', paddingLeft: '10px' }}
-          className="letter-input border border-gray-600 text-white w-full focus:border-black focus:outline-none"
+          className="letter-input border border-gray-600 text-white w-full focus:border-black focus:outline-none wordle-input"
           autoComplete="off"
         />
       </div>
