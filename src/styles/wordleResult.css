@@ -1,0 +1,97 @@
+  /* Wave Animation */
+  .highlighted-text {
+    text-transform: uppercase;
+  }
+  
+  /* HTML: <div class="loader"></div> */
+  .glass-card {
+    width: min-content;
+      min-width: 300px;
+      height: fit-content;
+  }
+  
+  
+  @keyframes colorTransition {
+    0%, 50%, 100% {
+      background-color: var(--orange-web);
+      color: #ffffff;
+    }
+    25%, 75% {
+      background-color: #ffffff;
+      color: black;
+    }
+  }
+  
+  .animate-color-transition {
+    transition: background-color 0.05s ease-in-out, color 0.05s ease-in-out !important;
+    animation: colorTransition 10s infinite ease-in-out;
+  }
+  .letter-input:focus {
+    border-color: black; /* Ensures the border remains black on focus */
+    box-shadow: none; /* Removes any additional focus shadow */
+  }
+  
+  .loading {
+      margin-left: auto;
+      margin-right: auto;
+      width: 40px;
+      height: 40px;
+      --c:no-repeat linear-gradient(orange 0 0);
+      background: var(--c),var(--c),var(--c),var(--c);
+      background-size: 21px 21px;
+      animation: l5 1.5s infinite cubic-bezier(0.3,1,0,1);
+  }
+  @keyframes l5 {
+     0%   {background-position: 0    0,100% 0   ,100% 100%,0 100%}
+     33%  {background-position: 0    0,100% 0   ,100% 100%,0 100%;width:60px;height: 60px}
+     66%  {background-position: 100% 0,100% 100%,0    100%,0 0   ;width:60px;height: 60px}
+     100% {background-position: 100% 0,100% 100%,0    100%,0 0   }
+  }
+  
+  
+  /* Red Box for No Results */
+  .no-results {
+      height: fit-content;
+      background-color: rgba(255, 0, 0, 0.1);
+      border: 1px solid red;
+      color: red;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 20px;
+  }
+  
+  /* Input Styles */
+  input[type="text"] {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      text-align: center;
+      background-color: white;
+      color: white;
+      caret-color: black; /* Makes the i-cursor visible */
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 2rem;
+      transition: all 0.3s ease;
+  }
+  
+  #grey-letters{
+      width: 100% !important;
+      padding-left: 5px;
+  }
+  
+  /* Placeholder Text Color */
+  input[type="text"]::placeholder {
+      color: lightgray;
+      opacity: 0.8; /* Ensures the placeholder is fully opaque */
+      text-transform: none !important;
+      padding-left: 5px;
+  }
+  /* Medium screen (tablets) */
+  @media (max-width: 990px) {
+      input[type="text"] {
+          width: 45px;
+          height: 45px;
+          font-size: 1.2rem;
+      }
+  }

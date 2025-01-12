@@ -1,0 +1,108 @@
+
+input[type="text"] {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: white;
+    color: white;
+    caret-color: black; /* Makes the i-cursor visible */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+@keyframes colorTransition {
+  0%, 50%, 100% {
+    background-color: var(--orange-web);
+    color: #ffffff;
+  }
+  25%, 75% {
+    background-color: #ffffff;
+    color: black;
+  }
+}
+
+.trash-icon {
+    font-size: 1.25rem;
+    transition: opacity 0.2s;
+}
+.trash-icon:hover {
+    opacity: 0.7;
+}
+
+
+.letter-input:focus {
+  border-color: black; /* Ensures the border remains black on focus */
+  box-shadow: none; /* Removes any additional focus shadow */
+}
+
+
+.animate-color-transition {
+  transition: background-color 0.05s ease-in-out, color 0.05s ease-in-out !important;
+  animation: colorTransition 10s infinite ease-in-out;
+}
+/* Medium screen (tablets) */
+@media (max-width: 768px) {
+    input[type="text"] {
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Small screen (mobile devices) */
+@media (max-width: 480px) {
+    input[type="text"] {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Placeholder Text Color */
+input[type="text"]::placeholder {
+    color: lightgray;
+    opacity: 0.8; /* Ensures the placeholder is fully opaque */
+    text-transform: none !important;
+    padding-left: 5px;
+}
+
+
+  .glass-card {
+  position: relative;
+  max-width: 400px;
+  min-width: 280px;
+    background: none !important;
+  width: 100%; 
+}
+
+  .loading {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40px;
+    height: 40px;
+    --c:no-repeat linear-gradient(orange 0 0);
+    background: var(--c),var(--c),var(--c),var(--c);
+    background-size: 21px 21px;
+    animation: l5 1.5s infinite cubic-bezier(0.3,1,0,1);
+}
+
+
+@keyframes l5 {
+   0%   {background-position: 0    0,100% 0   ,100% 100%,0 100%}
+   33%  {background-position: 0    0,100% 0   ,100% 100%,0 100%;width:60px;height: 60px}
+   66%  {background-position: 100% 0,100% 100%,0    100%,0 0   ;width:60px;height: 60px}
+   100% {background-position: 100% 0,100% 100%,0    100%,0 0   }
+}
+#output-heading {
+      margin: -15px 30px 15px 30px;
+    }
+@media (max-width:426px ) {
+    #output-heading {
+      margin: -40px 30px 15px 30px;
+    }
+  }
+
