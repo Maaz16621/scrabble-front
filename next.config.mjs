@@ -11,5 +11,5 @@ const nextConfig = withPWA({
 });
 
 nextConfig.output = 'export';
-
+nextConfig.distDir ='.next';
 export default nextConfig;
