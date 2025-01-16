@@ -1,6 +1,6 @@
 [build]
-  command = "npm run build && npm run start"
-  publish = "./"
+  command = "npm run build"
+  publish = "out"
 
 [[redirects]]
   from = "/*"
