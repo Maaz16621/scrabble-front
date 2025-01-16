@@ -4,8 +4,10 @@ import axios from 'axios';
 
 // Function to fetch blog data
 async function fetchBlogData(slug) {
+  console.log('Slug:', slug); // Add this line
+  const cleanedSlug = slug.endsWith('.php') ? slug.replace('.php', '') : slug;
   try {
-    const response = await axios.get(`https://stagging.aiwordsolver.com/admin/blog/${slug}`);
+    const response = await axios.get(`https://stagging.aiwordsolver.com/admin/blog/${cleanedSlug}`);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching blog data:', error);
@@ -15,7 +17,7 @@ async function fetchBlogData(slug) {
 
 // BlogPage Component
 const BlogPage = async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await params;
   const pageData = await fetchBlogData(slug);
 
   if (!pageData || pageData.active === 0) {
@@ -50,7 +52,7 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const pageData = await fetchBlogData(slug);
 
   if (!pageData) {

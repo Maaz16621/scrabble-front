@@ -1,13 +1,21 @@
-import withPWA from 'next-pwa';
 
-const nextConfig = withPWA({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  sw: 'service-worker.js',
-  swDest: 'public/service-worker.js',
-});
+export default nextConfig;
+
+
+
+const nextConfig   = {
+  output: 'export',
+ 
+  // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
+  // trailingSlash: true,
+ 
+  // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
+  // skipTrailingSlashRedirect: true,
+ 
+  // Optional: Change the output directory `out` -> `dist`
+  // distDir: 'dist',
+}
 
 nextConfig.output = 'export';
-nextConfig.distDir ='.next';
+
 export default nextConfig;

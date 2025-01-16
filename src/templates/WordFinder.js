@@ -228,7 +228,7 @@ const WordFinder = ({ pageData }) => {
         </form>
       </div>
     </main>
-      <Sections sections={sections} />
+      <Sections sections={pageData.sections} />
     </>
   );
 };

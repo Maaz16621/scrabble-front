@@ -1,0 +1,5 @@
+server_name     phpstack-1395687-5174920.cloudwaysapps.com;
+location /_next/ {
+    alias /home/master/applications/xytxefedqz/public_html/_next/;
+    try_files $uri $uri/ /index.html; 
+}

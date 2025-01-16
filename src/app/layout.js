@@ -9,6 +9,7 @@ import Head from "next/head"; // For handling dynamic meta tags
 import axios from 'axios';
 import { useState, useEffect } from 'react'; // Importing hooks for client-side functionality
 import { Suspense } from "react";
+import { useParams } from 'next/navigation';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -18,17 +19,21 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
+axios.interceptors.request.use(request => {
+  console.log('Axios Request URL:', request.url);
+  return request;
+});
 export default function RootLayout({ children }) {
   // State to store navigation links
   const [navLinks, setNavLinks] = useState([]);
+  const params = useParams();
 
   useEffect(() => {
     // Fetch nav links (e.g., from an API or static data)
     axios.get('https://stagging.aiwordsolver.com/admin/tool/getAllTools') // Replace with actual endpoint
       .then((response) => {
         setNavLinks(response.data);
-        console.log(navLinks);
+       
       })
       .catch((error) => {
         console.error('Error fetching nav links:', error);

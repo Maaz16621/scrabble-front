@@ -1,19 +1,11 @@
-
-
-
-const nextConfig   = {
-  output: 'export',
- 
-  // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
-  // trailingSlash: true,
- 
-  // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
-  // skipTrailingSlashRedirect: true,
- 
-  // Optional: Change the output directory `out` -> `dist`
-  // distDir: 'dist',
-}
-
-nextConfig.output = 'export';
-
-export default nextConfig;
+// next.config.mjs
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    serverComponents: true,
+  },
+  // Disable HMR on the client side in production
+  reactStrictMode: true, // Enable strict mode for React
+  
+};
+export default nextConfig

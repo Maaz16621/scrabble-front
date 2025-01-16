@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams  } from 'next/navigation';
+import Sections from "@/components/Sections";
 import '../styles/wordleSolver.css';
 const WordleSolver = ({pageData}) => {
   const [greenLetters, setGreenLetters] = useState({ green1: '', green2: '', green3: '', green4: '', green5: '' });
@@ -135,6 +136,7 @@ const WordleSolver = ({pageData}) => {
   };
   
   return (
+    <>
     <main className="hero relative h-[75vh]">
       <div className="mobile-screen-shape"></div>
       <div id="error-message" 
@@ -264,6 +266,8 @@ const WordleSolver = ({pageData}) => {
     </form>
     </div>
     </main>
+      <Sections sections={pageData.sections} />
+      </>
   );
 };
 
